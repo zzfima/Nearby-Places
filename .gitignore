@@ -59,3 +59,5 @@ app.publish/
 .vscode/
 /NearbyPlaces/NearbyPlaces.http
 /NearbyPlaces/Migrations/*
+*.db-shm
+/NearbyPlaces/NearbyPlaces.db-wal
