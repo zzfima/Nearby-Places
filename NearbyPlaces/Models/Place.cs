@@ -17,4 +17,6 @@ public class Place
     public PlaceType Type { get; set; }
 
     public double Rating { get; set; }
+
+    public DateTime CreatedUtc { get; set; }
 }
