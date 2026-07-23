@@ -11,10 +11,12 @@ namespace NearbyPlaces.Controllers
     public class NearbyPlacesController : Controller
     {
         private readonly NearbyPlacesDbContext _db;
+        private readonly RedisCrud _redisCrud;
 
-        public NearbyPlacesController(NearbyPlacesDbContext db)
+        public NearbyPlacesController(NearbyPlacesDbContext db, RedisCrud redisCrud)
         {
             _db = db;
+            _redisCrud = redisCrud;
         }
 
         [HttpGet(Name = "GetAllPlaces")]
@@ -34,10 +36,7 @@ namespace NearbyPlaces.Controllers
 
         public async Task<string> TestRedisGet()
         {
-            RedisCrud redisCrud = new RedisCrud();
-            await redisCrud.Connect();
-            string res = await redisCrud.RetrieveValue("tr");
-            await redisCrud.Disonnect();
+            string res = await _redisCrud.RetrieveValue("tr");
             return res;
         }
     }
