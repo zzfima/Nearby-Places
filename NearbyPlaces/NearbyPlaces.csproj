@@ -30,4 +30,8 @@
     <PackageReference Include="StackExchange.Redis" Version="3.0.17" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="TODO\" />
+  </ItemGroup>
+
 </Project>
