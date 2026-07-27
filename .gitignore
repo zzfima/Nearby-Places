@@ -58,6 +58,5 @@ app.publish/
 # JetBrains / VS Code
 .vscode/
 /NearbyPlaces/NearbyPlaces.http
-/NearbyPlaces/Migrations/*
 *.db-shm
 /NearbyPlaces/NearbyPlaces.db-wal
