@@ -4,23 +4,18 @@ namespace NearbyPlaces.Redis
 {
     public class RedisCrud
     {
+        private const string DefaultConnection = "localhost:6379";
         private ConnectionMultiplexer _connection;
-        IDatabase _db;
-        public async Task Connect()
+        private IDatabase _db;
+
+        public async Task Connect(string? connectionString)
         {
-            string connectionString = "localhost:6379";
-            _connection = await ConnectionMultiplexer.ConnectAsync(connectionString);
+            _connection = await ConnectionMultiplexer.ConnectAsync(connectionString ?? DefaultConnection);
             _db = _connection.GetDatabase();
         }
 
-        public async Task<string> RetrieveValue(string key)
-        {
-            return await _db.StringGetAsync(key);
-        }
+        public async Task<string> RetrieveValue(string key) => await _db.StringGetAsync(key);
 
-        public async Task Disonnect()
-        {
-            await _connection.CloseAsync();
-        }
+        public async Task Disonnect() => await _connection.CloseAsync();
     }
 }
